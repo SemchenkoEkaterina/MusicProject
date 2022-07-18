@@ -1,0 +1,12 @@
+
+.list-group-item.active {
+    background-color: #8f6366;
+}
+.list-group-item {
+    border: 1px solid #8f6366;
+    border-top-left-radius: 25px !important;
+    border-top-right-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+    border-top-width: 1px !important;
+}
