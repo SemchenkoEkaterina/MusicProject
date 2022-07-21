@@ -8,9 +8,12 @@ import Col from "react-bootstrap/Col";
 import { fetchArtists, fetchTracks } from '../http/trackAPI';
 import TrackList from '../components/TrackList';
 import PaginationComponent from '../components/Pagination';
+import ButtonAdd from '../components/ButtonAdd';
 
 const Tracks = observer(() => { 
     const {tracks} = useContext(Context);
+    const { user } = useContext(Context);
+
 useEffect(() => {
     fetchArtists().then(data => tracks.setArtists(data))
     fetchTracks(null, 1, 2).then(data => {
@@ -25,7 +28,6 @@ useEffect(() => {
         tracks.setTotalCount(data[0][0].count);
     })
 }, [tracks.selectedArtist, tracks.page, ])
-
     return (
         <Container className="mt-4">
              <Row className="mt-2">
@@ -40,6 +42,7 @@ useEffect(() => {
                 </Col>
                 <Col md={9}>
                     <TrackList/>
+                    <ButtonAdd isAuth={user.isAuth} text='Добавить трэк'/>
                     <PaginationComponent/>
                 </Col>
             </Row>
