@@ -5,6 +5,7 @@ export default class TracksStore {
         this._tracks = [];
         this._artists = [];
         this._selectedArtist = {};
+        this._selectedModalArtist = {};
         this._page = 1;
         this._totalCount = 0;
         this._limit = 2 ;
@@ -21,6 +22,10 @@ export default class TracksStore {
 
     setSelectedArtist(artist) {
         this._selectedArtist = artist;
+    }
+    
+    setSelectedModalArtist(artist) {
+        this._selectedModalArtist = artist;
     }
 
     setPage(page) {
@@ -40,6 +45,10 @@ export default class TracksStore {
 
     get selectedArtist() {
         return this._selectedArtist;
+    }
+
+    get selectedModalArtist() {
+        return this._selectedModalArtist;
     }
 
     get totalCount() {

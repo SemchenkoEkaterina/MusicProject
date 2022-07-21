@@ -12,7 +12,8 @@ const Artist = sequelize.define('artist', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     fullname: {type: DataTypes.STRING},
     datebirth: {type: DataTypes.DATE},
-    information: {type: DataTypes.TEXT}
+    information: {type: DataTypes.TEXT},
+    image: {type: DataTypes.STRING, allowNull:false}
 })
 
 const Track = sequelize.define('track', {

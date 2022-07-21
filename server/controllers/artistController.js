@@ -1,4 +1,5 @@
-
+const uuid = require('uuid');
+const path = require('path');
 const sequelize = require('../db');
 const ApiError = require('../error/apiError');
 
@@ -91,12 +92,16 @@ class ArtistController {
 			const data = req.body;
 			let nameSql = ["fullname", "datebirth", "information"];
 			let names = [];
+			const {image} = req.files;
+			let imageName = uuid.v4() + ".jpeg";
+            image.mv(path.resolve(__dirname,'..', 'static', imageName));
 			for (var key in nameSql) {
 				if (data[nameSql[key]] !== undefined) {
 					names.push(nameSql[key] + '=' + `'${data[nameSql[key]]}'`);
 
 				}
 			}
+			names.push('image'+ '=' + `'${imageName}'`);
 			const sql = "UPDATE artists SET " + names.join(',') + ` WHERE id=${data.id}`;
 			const artist = await sequelize.query(sql, {
 				type: sequelize.QueryTypes.UPDATE
