@@ -79,7 +79,8 @@ class TrackController {
 		try {
 			const id = req.params.id;
 			const sql = `
-        SELECT * FROM tracks WHERE id=${id}
+        SELECT tracks.name, tracks.information, tracks.file, artists.fullname, artists.id FROM tracks JOIN artist_tracks ON tracks.id = artist_tracks."trackId"
+		JOIN artists ON artist_tracks."artistId"=artists.id WHERE "trackId"=${id}
       `;
 			const track = await sequelize.query(sql, {
 				type: sequelize.QueryTypes.SELECT

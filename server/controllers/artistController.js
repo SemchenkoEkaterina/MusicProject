@@ -7,9 +7,12 @@ class ArtistController {
 	async create(req, res, next) {
 		try {
 			const { fullname, datebirth, information, trackId} = req.body;
+			const {image} = req.files;
+            let imageName = uuid.v4() + ".ogg";
+            image.mv(path.resolve(__dirname,'..', 'static', imageName));
 			const sql = `
-    	INSERT INTO artists (fullname, datebirth, information)
-    	VALUES ('${fullname}', '${datebirth}', '${information}')
+    	INSERT INTO artists (fullname, datebirth, information, image)
+    	VALUES ('${fullname}', '${datebirth}', '${information}', '${imageName}')
 			RETURNING id, fullname, datebirth, information
   		`;
 			const newArtist = await sequelize.query(sql, {

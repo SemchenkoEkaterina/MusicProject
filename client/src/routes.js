@@ -32,7 +32,7 @@ export const authRoutes = [
         component: <Tracks/>,
     },
     {
-        path: TRACKS_ROUTE + ':id',
+        path: TRACKS_ROUTE + '/:id',
         component: <TrackDetail/>,
     }
 ]

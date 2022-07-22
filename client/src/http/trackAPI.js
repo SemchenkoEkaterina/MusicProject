@@ -22,3 +22,8 @@ export const fetchTracks = async (artistId, page, limit) => {
     return data;
 }
 
+export const fetchOneTrack = async (id) => {
+    const {data} = await $host.get('api/track/' + id);
+    return data;
+}
+
