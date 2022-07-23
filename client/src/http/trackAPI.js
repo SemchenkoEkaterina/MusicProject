@@ -10,6 +10,11 @@ export const fetchArtists = async () => {
     return data;
 }
 
+export const fetchOneArtist = async (id) => {
+    const {data} = await $host.get('api/artist/' + id);
+    return data;
+}
+
 export const createTrack = async (track) => {
     const {data} = await $authHost.post('api/track', track);
     return data;

@@ -24,8 +24,8 @@ const CreateTrack = observer(({show, onHide}) => {
         const formData = new FormData()
         formData.append('name', name)
         formData.append('file', file)
-        formData.append('artistId', tracks.selectedArtist.id)
-        formData.append('infomation', JSON.stringify(info))
+        formData.append('artistId', tracks.selectedModalArtist.id)
+        formData.append('information', JSON.stringify(info))
         createTrack(formData).then(data => onHide())
     }
 

@@ -24,7 +24,7 @@ export const authRoutes = [
         component: <Artists/>,
     },
     {
-        path: ARTISTS_ROUTE + ':id',
+        path: ARTISTS_ROUTE + '/:id',
         component: <ArtistDetail/>,
     },
     {
